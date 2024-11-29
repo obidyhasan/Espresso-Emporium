@@ -1,4 +1,47 @@
+import Swal from "sweetalert2";
+
 const AddCoffee = () => {
+  function handelAddCoffee(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const price = form.price.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+
+    const coffeeInfo = {
+      name,
+      chef,
+      supplier,
+      price,
+      category,
+      details,
+      photo,
+    };
+
+    fetch("http://localhost:5000/coffees", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(coffeeInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          form.reset();
+          Swal.fire({
+            title: "Success",
+            text: `${name} insert successfully!`,
+            icon: "success",
+          });
+        }
+      });
+  }
+
   return (
     <div className="mx-5 my-20">
       <div className="max-w-7xl mx-auto px-5 bg-[#F4F3F0] py-10">
@@ -12,7 +55,7 @@ const AddCoffee = () => {
           </p>
         </div>
 
-        <form className="m-5 space-y-3">
+        <form onSubmit={handelAddCoffee} className="m-5 space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div className="form-control">
               <label className="label">

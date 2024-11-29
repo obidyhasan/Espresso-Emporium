@@ -14,8 +14,17 @@ import cup5 from "../assets/images/cups/Rectangle 14.png";
 import cup6 from "../assets/images/cups/Rectangle 15.png";
 import cup7 from "../assets/images/cups/Rectangle 16.png";
 import cup8 from "../assets/images/cups/Rectangle 9.png";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const [coffees, setCoffees] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/coffees")
+      .then((res) => res.json())
+      .then((data) => setCoffees(data));
+  }, []);
+
   return (
     <div>
       {/* Hero section */}
@@ -91,11 +100,14 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-20">
-          <CoffeeCard></CoffeeCard>
-          <CoffeeCard></CoffeeCard>
-          <CoffeeCard></CoffeeCard>
-          <CoffeeCard></CoffeeCard>
-          <CoffeeCard></CoffeeCard>
+          {coffees.map((coffee) => (
+            <CoffeeCard
+              key={coffee._id}
+              coffee={coffee}
+              coffees={coffees}
+              setCoffees={setCoffees}
+            ></CoffeeCard>
+          ))}
         </div>
       </section>
 
