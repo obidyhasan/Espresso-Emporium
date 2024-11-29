@@ -2,6 +2,7 @@ import coffeeImg from "../assets/images/coffee/1.png";
 
 import { FaEye } from "react-icons/fa";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CoffeeCard = () => {
   return (
@@ -25,12 +26,18 @@ const CoffeeCard = () => {
         </div>
       </div>
       <div className="flex flex-col mr-5 gap-2">
-        <button className="btn bg-[#D2B48C] text-white rounded">
+        <Link
+          to={"/coffeeDetails"}
+          className="btn bg-[#D2B48C] text-white rounded"
+        >
           <FaEye></FaEye>
-        </button>
-        <button className="btn bg-[#3C393B] text-white rounded">
+        </Link>
+        <Link
+          to={"/updateCoffee"}
+          className="btn bg-[#3C393B] text-white rounded"
+        >
           <MdEdit className="text-lg"></MdEdit>
-        </button>
+        </Link>
         <button className="btn bg-[#EA4744] text-white rounded">
           <MdDelete className="text-lg"></MdDelete>
         </button>

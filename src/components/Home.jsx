@@ -40,7 +40,7 @@ const Home = () => {
 
       {/* Service Section */}
       <div className="bg-[#ECEAE3]">
-        <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 py-10">
+        <div className="max-w-7xl mx-auto px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7 py-10">
           <div className="space-y-1">
             <img src={icon1} className="w-14 h-14 object-contain" alt="" />
             <h3 className="text-2xl text-[#242222]">Awesome Aroma</h3>
