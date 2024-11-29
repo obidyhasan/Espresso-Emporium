@@ -1,3 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  font-family: "Rancho", cursive;
+}
+
+.hero-bg {
+  background-image: url("./assets/images/more/3.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.footer-bg {
+  background-image: url("./assets/images/more/13.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
