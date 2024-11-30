@@ -14,10 +14,12 @@ import cup5 from "../assets/images/cups/Rectangle 14.png";
 import cup6 from "../assets/images/cups/Rectangle 15.png";
 import cup7 from "../assets/images/cups/Rectangle 16.png";
 import cup8 from "../assets/images/cups/Rectangle 9.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Home = () => {
   const [coffees, setCoffees] = useState([]);
+  const { logoutUser } = useContext(AuthContext);
 
   useEffect(() => {
     fetch("http://localhost:5000/coffees")
@@ -40,8 +42,11 @@ const Home = () => {
               nostalgia back!! Your companion of every moment!!! Enjoy the
               beautiful moments and make them memorable.
             </p>
-            <button className="btn btn-sm rounded-none bg-[#E3B577] border-none text-[#242222] text-base px-5">
-              Learn More
+            <button
+              onClick={logoutUser}
+              className="btn btn-sm rounded-none bg-[#E3B577] border-none text-[#242222] text-base px-5"
+            >
+              Logout
             </button>
           </div>
         </div>
@@ -116,6 +121,13 @@ const Home = () => {
         <div className="flex flex-col items-center gap-2">
           <h5 className="font-sans text-sm text-gray-600">Follow Us Now</h5>
           <h2 className="text-4xl text-primary">Our Popular Products</h2>
+
+          <Link
+            to={"/users"}
+            className="btn btn-sm rounded-none bg-secondary text-base text-primary"
+          >
+            Show Users
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-20">

@@ -5,6 +5,10 @@ import Home from "../components/Home";
 import AddCoffee from "../components/AddCoffee";
 import UpdateCoffee from "../components/UpdateCoffee";
 import CoffeeDetails from "../components/CoffeeDetails";
+import PrivateRouter from "./PrivateRouter";
+import Login from "../components/Login";
+import Register from "../components/Register";
+import Users from "../components/Users";
 
 const router = createBrowserRouter([
   {
@@ -14,23 +18,56 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <PrivateRouter>
+            <Home></Home>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/addCoffee",
-        element: <AddCoffee></AddCoffee>,
+        element: (
+          <PrivateRouter>
+            <AddCoffee></AddCoffee>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/updateCoffee/:id",
-        element: <UpdateCoffee></UpdateCoffee>,
+        element: (
+          <PrivateRouter>
+            <UpdateCoffee></UpdateCoffee>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffees/${params.id}`),
       },
       {
         path: "/coffeeDetails/:id",
-        element: <CoffeeDetails></CoffeeDetails>,
+        element: (
+          <PrivateRouter>
+            <CoffeeDetails></CoffeeDetails>
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/coffees/${params.id}`),
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/users",
+        element: (
+          <PrivateRouter>
+            <Users></Users>
+          </PrivateRouter>
+        ),
+        loader: () => fetch("http://localhost:5000/users"),
       },
     ],
   },
