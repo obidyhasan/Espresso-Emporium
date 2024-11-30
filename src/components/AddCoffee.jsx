@@ -22,7 +22,7 @@ const AddCoffee = () => {
       photo,
     };
 
-    fetch("http://localhost:5000/coffees", {
+    fetch("https://espresso-emporium-server-jade-nine.vercel.app/coffees", {
       method: "POST",
       headers: {
         "content-type": "application/json",

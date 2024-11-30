@@ -15,7 +15,7 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         const lastLogin = result.user?.metadata?.lastSignInTime;
-        fetch("http://localhost:5000/users", {
+        fetch("https://espresso-emporium-server-jade-nine.vercel.app/users", {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

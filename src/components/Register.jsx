@@ -17,7 +17,7 @@ const Register = () => {
       .then((result) => {
         const createdAt = result?.user?.metadata?.creationTime;
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://espresso-emporium-server-jade-nine.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

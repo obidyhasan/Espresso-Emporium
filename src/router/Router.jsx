@@ -40,7 +40,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(
+            `https://espresso-emporium-server-jade-nine.vercel.app/coffees/${params.id}`
+          ),
       },
       {
         path: "/coffeeDetails/:id",
@@ -50,7 +52,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/coffees/${params.id}`),
+          fetch(
+            `https://espresso-emporium-server-jade-nine.vercel.app/coffees/${params.id}`
+          ),
       },
       {
         path: "/login",
@@ -67,7 +71,8 @@ const router = createBrowserRouter([
             <Users></Users>
           </PrivateRouter>
         ),
-        loader: () => fetch("http://localhost:5000/users"),
+        loader: () =>
+          fetch("https://espresso-emporium-server-jade-nine.vercel.app/users"),
       },
     ],
   },
